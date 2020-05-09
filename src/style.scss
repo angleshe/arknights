@@ -1,0 +1,77 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#arknight {
+  $boxSize: 50px;
+
+  position: relative;
+  display: inline-block;
+  background-color: #333;
+
+  & > .box-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 30px;
+    font-size: 16px;
+    color: #666;
+
+    & > .box-list-line {
+      $space: 5px;
+
+      display: flex;
+
+      &:not(:nth-last-child(1)) {
+        margin-bottom: $space;
+      }
+
+      & > .box {
+        box-sizing: border-box;
+        width: $boxSize;
+        height: $boxSize;
+        line-height: $boxSize;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid;
+        outline: none;
+        transition: 300ms;
+
+        &:hover {
+          color: #fff;
+        }
+
+        &:focus-within {
+          color: #666;
+          background-color: #fe2;
+        }
+
+        &:not(:nth-last-child(1)) {
+          margin-right: $space;
+        }
+      }
+    }
+
+    &.box-list-border {
+      $maskSize: 150px;
+
+      display: none;
+      mask-size: $maskSize $maskSize;
+      mask-repeat: no-repeat;
+      mask-image: radial-gradient(circle, #fff, transparent 75px);
+      mask-position: var(--mask-x) var(--mask-y);
+
+      & > .box-list-line > .box {
+        border-color: #2bf;
+      }
+    }
+
+    &.box-list-num {
+      & > .box-list-line > .box {
+        border-color: transparent;
+      }
+    }
+  }
+}
